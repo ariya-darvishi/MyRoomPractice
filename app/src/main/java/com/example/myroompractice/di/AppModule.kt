@@ -2,7 +2,10 @@ package com.example.myroompractice.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.myroompractice.data.SchoolDao
 import com.example.myroompractice.data.SchoolDatabase
+import com.example.myroompractice.repositories.DefaultSchoolRepository
+import com.example.myroompractice.repositories.SchoolRepository
 import com.example.myroompractice.utlis.Constants.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
@@ -26,4 +29,16 @@ class AppModule {
     ).build()
 
 
+    @Singleton
+    @Provides
+    fun providesSchoolDao(
+        database: SchoolDatabase
+    ) = database.schoolDao()
+
+
+    @Singleton
+    @Provides
+    fun provideDefaultShoppingRepository(
+        dao: SchoolDao
+    ) = DefaultSchoolRepository(dao) as SchoolRepository
 }

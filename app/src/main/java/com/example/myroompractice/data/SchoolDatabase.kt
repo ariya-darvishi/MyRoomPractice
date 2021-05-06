@@ -22,7 +22,7 @@ import com.example.myroompractice.data.entities.relations.StudentSubjectCrossRef
 )
 abstract class SchoolDatabase : RoomDatabase() {
 
-    abstract val schoolDao: SchoolDao
+    abstract fun schoolDao(): SchoolDao
 
 //    companion object {
 //        @Volatile
